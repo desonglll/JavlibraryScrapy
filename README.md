@@ -1,4 +1,6 @@
-## :danger: New Version !!! :danger:
+## :warning: New Version !!! :warning:
+
+这个旧版本的代码写的太臃肿了，转去新版本力！！
 
 ->
 -> https://github.com/desonglll/scrapyJAV
