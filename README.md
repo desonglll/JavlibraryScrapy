@@ -1,3 +1,9 @@
+## :danger: New Version !!! :danger:
+
+->
+-> https://github.com/desonglll/scrapyJAV
+->
+
 ## 🖥️ Javlibrary 爬虫
 
 ### 🌟 介绍
