@@ -17,7 +17,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
 from db_operations import fetch_data_from_db, get_works_table_count
-from models import Work
+from models import Work, Cast
 
 app = FastAPI()
 app.add_middleware(
@@ -59,6 +59,20 @@ def get_work(id: int = Path(..., title="The ID of the work")):
         return work_data[0]  # 返回查询到的第一条数据
     else:
         return {"error": "Work not found"}  # 如果未找到作品，返回错误信息
+
+
+@app.get("/api/actors", response_model=List[Cast])
+def get_actors():
+    query = """SELECT
+    DISTINCT cast_id,
+    SUBSTRING_INDEX(cast, ' ', 1) AS cast
+FROM
+    works_table
+WHERE
+    LENGTH(cast) - LENGTH(REPLACE(cast, ' ', '')) = 0;
+"""
+    actors_data = fetch_data_from_db(query)
+    return actors_data
 
 
 if __name__ == "__main__":

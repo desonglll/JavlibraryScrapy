@@ -28,11 +28,15 @@ class WorksSpider(scrapy.Spider):
 
     def start_requests(self):
         actor_ids = get_config("ids")
-
+        cookies = {
+            'over18': '18',
+        }
         for actor_id in actor_ids:
             yield scrapy.Request(
                 url=self.base_url_template.format(url=get_config("base_url"), actor_id=actor_id, page=1),
                 callback=self.parse_pagination,
+                cookies=cookies,
+                dont_filter=True,  # 即使是重复请求也继续执行
                 meta={
                     "base_url": self.base_url_template.format(
                         url=get_config("base_url"), actor_id=actor_id, page="{}"
@@ -40,6 +44,14 @@ class WorksSpider(scrapy.Spider):
                     "cast_id": actor_id
                 },
             )
+            # 发送一个额外的请求以爬取第一页的数据
+            # yield scrapy.Request(
+            #     url=self.base_url_template.format(url=get_config("base_url"), actor_id=actor_id, page=1),
+            #     callback=self.parse,
+            #     dont_filter=True,  # 即使是重复请求也继续执行
+            #     meta={
+            #         "cast_id": actor_id
+            #     })
 
     def parse_pagination(self, response):
         base_url = response.meta["base_url"]
@@ -50,7 +62,6 @@ class WorksSpider(scrapy.Spider):
         # 使用for循环生成每一页的URL，并使用parse方法爬取数据
         custom_page = get_config("custom_page")
         for page in range(1, last_page_num + 1 if custom_page == -1 else custom_page + 1):
-            print(base_url.format(page))
             yield scrapy.Request(url=base_url.format(page), callback=self.parse, meta={
                 "cast_id": cast_id
             })

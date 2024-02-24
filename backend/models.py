@@ -15,6 +15,14 @@ from pydantic import BaseModel
 from typing import List, Optional
 
 
+class Cast(BaseModel):
+    cast_id: Optional[str]
+    cast: Optional[str]
+
+    class Config:
+        from_attributes = True
+
+
 class Work(BaseModel):
     id: Optional[int]
     link: Optional[str]
@@ -36,7 +44,7 @@ class Work(BaseModel):
     preview_thumbs: Optional[str]
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class DateRange(BaseModel):
