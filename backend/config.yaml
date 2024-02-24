@@ -1,0 +1,7 @@
+mysql_db_name: "scrapyjav"
+mysql_config:
+  host: "localhost"
+  user: "root"
+  password: ""
+  charset: "utf8mb4"
+mysql_db_script: "scrapyjav.sql"

@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "scrapyJAV"
+version = "0.1.0"
+description = ""
+authors = ["desonglll <lindesong666@163.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+Scrapy = "^2.11.0"
+pymysql = "^1.1.0"
+pyyaml = "^6.0.1"
+rich = "^13.7.0"
+tqdm = "^4.66.2"
+
+[tool.poetry.scripts]
+scrapyjav = 'main:main'
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
