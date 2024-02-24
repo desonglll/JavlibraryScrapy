@@ -4,26 +4,26 @@ A tool to scrape works data from library and displaying in custom website.
 
 this project includes backend and frontend.
 
-![alt text](assets/imgs/img.jpg)
+<img alt="demo" src="assets/imgs/img.jpg" width="500"/>
 
 The previous version of JavlibraryScrapy is released to the following address:
 <https://github.com/desonglll/JavlibraryScrapy/releases>
 
 - [:hugs:New Version Coming!:hugs:](#hugsnew-version-cominghugs)
-  - [Repoistories](#repoistories)
-  - [:zzz: Requirements](#zzz-requirements)
-    - [Before](#before)
-    - [:snake: Install Conda](#snake-install-conda)
-    - [Create a new Python environment using conda](#create-a-new-python-environment-using-conda)
-    - [Clone](#clone)
-    - [Install `poetry`](#install-poetry)
-  - [:rocket: Running](#rocket-running)
-    - [Configuration](#configuration)
-    - [Initialize Database](#initialize-database)
-    - [Start scrapy](#start-scrapy)
-    - [Delete database](#delete-database)
-  - [Backend Server](#backend-server)
-  - [Frontend Server](#frontend-server)
+    - [Repoistories](#repoistories)
+    - [:zzz: Requirements](#zzz-requirements)
+        - [Before](#before)
+        - [:snake: Install Conda](#snake-install-conda)
+        - [Create a new Python environment using conda](#create-a-new-python-environment-using-conda)
+        - [Clone](#clone)
+        - [Install `poetry`](#install-poetry)
+    - [:rocket: Running](#rocket-running)
+        - [Configuration](#configuration)
+        - [Initialize Database](#initialize-database)
+        - [Start scrapy](#start-scrapy)
+        - [Delete database](#delete-database)
+    - [Backend Server](#backend-server)
+    - [Frontend Server](#frontend-server)
 
 ## Repoistories
 
