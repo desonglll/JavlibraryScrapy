@@ -1,5 +1,7 @@
 ## Database initialization
 
+修改模型就要修改`.sql`文件和`dbop.mysql_op.init_database()`
+
 ```mysql
 CREATE TABLE works_table
 (
@@ -20,4 +22,14 @@ CREATE TABLE works_table
     watched       VARCHAR(255),
     owned         VARCHAR(255)
 );
+```
+
+```shell
+mysql -Dtestsql -u root < database_structure.sql
+```
+
+## Export table structure
+
+```shell
+mysqldump -u root -p --no-data scrapyjav > database_structure.sql
 ```

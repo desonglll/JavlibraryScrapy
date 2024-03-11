@@ -128,6 +128,30 @@ Edit `scrapyJAV/config.yaml` for argument configuration.
 
 Suppose you are in `scrapyjav-project` directory.
 
+There is two ways to create database
+
+#### Running `.sql` file
+
+```shell
+cd scrapyJAV
+mysql -u root -p
+```
+
+Then
+
+```mysql
+create database scrapyjav character set utf8;
+exit
+```
+
+Running `.sql` file using the following command
+
+```shell
+mysql -Dscrapyjav -u root < database_structure.sql
+```
+
+#### Using built-in methods
+
 Running the following command for initialize the database.
 
 ```shell
