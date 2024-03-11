@@ -12,6 +12,7 @@ pymysql = "^1.1.0"
 pyyaml = "^6.0.1"
 rich = "^13.7.0"
 tqdm = "^4.66.2"
+pymongo = "^4.6.2"
 
 [tool.poetry.scripts]
 scrapyjav = 'main:main'

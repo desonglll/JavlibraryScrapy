@@ -20,9 +20,11 @@ class WorksSpider(scrapy.Spider):
         "{url}/vl_star.php?list&mode=2&s={actor_id}&page={page}"
     )
     items_dict = {}
+
     custom_settings = {
         'ITEM_PIPELINES': {
             'scrapyJAV.pipelines.MySQLPipeline': 1,
+            # 'scrapyJAV.pipelines.MongoDBPipeline': 2,
         },
     }
 

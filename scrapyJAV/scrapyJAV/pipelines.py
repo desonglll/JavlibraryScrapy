@@ -1,8 +1,48 @@
 from collections import defaultdict
 
 import pymysql
+from pymongo import MongoClient
 
 import scrapyJAV.config.database_config as db_config
+
+
+class MongoDBPipeline:
+    """
+    auth: mikeshinoda
+    date: 2024.3.11
+    """
+
+    def __init__(self):
+        self.items_dict = defaultdict(list)
+
+    def open_spider(self, spider):
+        self.conn = MongoClient('mongodb://localhost:27017')
+        self.db = self.conn.scrapy
+
+    def process_item(self, item, spider):
+        print(item)
+        # 构造要插入的文档
+        document = {
+            "title": item.get("title", ""),
+            "release_date": item.get("release_date", ""),
+            "serial_number": item.get("serial_number", ""),
+            "genres": item.get("genres", []),
+            "maker": item.get("maker", []),
+            "cast": item.get("cast", []),
+            "director": item.get("director", ""),
+            "length": item.get("length", ""),
+            "label": item.get("label", []),
+            "link": item.get("link", ""),
+            "preview": item.get("preview", ""),
+            "preview_thumbs": item.get("preview_thumbs", []),
+            "user_rating": item.get("user_rating", ""),
+            "watched": item.get("watched", ""),
+            "owned": item.get("owned", ""),
+            "subscribed": item.get("subscribed", "")
+        }
+
+        # 插入文档到数据库
+        self.db.works.insert_one(document)
 
 
 class MySQLPipeline:
