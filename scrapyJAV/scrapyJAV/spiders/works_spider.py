@@ -24,7 +24,7 @@ class WorksSpider(scrapy.Spider):
     custom_settings = {
         'ITEM_PIPELINES': {
             'scrapyJAV.pipelines.MySQLPipeline': 1,
-            # 'scrapyJAV.pipelines.MongoDBPipeline': 2,
+            'scrapyJAV.pipelines.MongoDBPipeline': 2,
         },
     }
 

@@ -12,6 +12,7 @@ from scrapy.crawler import CrawlerProcess
 from scrapy.utils.project import get_project_settings
 
 import dbop.mysql_op as mysql_op
+from dbop import mongo_op
 from scrapyJAV.config.arguments import get_config
 from scrapyJAV.spiders.works_spider import WorksSpider
 from rich import print as rprint
@@ -21,8 +22,6 @@ from tools.guide_info import print_all
 
 # TODO: Add your code here
 def main():
-    if not mysql_op.is_existing(get_config("mysql_db_name")):
-        mysql_op.init_database()
     # 创建一个CrawlerProcess
     process = CrawlerProcess(get_project_settings())
     # 先启动WorksSpider
@@ -41,8 +40,13 @@ def guide():
             if arg == "init":
                 rprint(f"[bold green]Initializing database: {get_config('mysql_db_name')}[/bold green]!")
                 mysql_op.init_database()
+                mongo_op.init_database()
+
         if opt == '-c':
             if arg == "start":
+                # 初始化数据库
+                if not mysql_op.is_existing(get_config("mysql_db_name")):
+                    mysql_op.init_database()
                 main()
         else:
             print_all()

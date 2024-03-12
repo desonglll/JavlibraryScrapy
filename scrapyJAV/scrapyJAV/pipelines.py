@@ -21,28 +21,32 @@ class MongoDBPipeline:
 
     def process_item(self, item, spider):
         print(item)
-        # 构造要插入的文档
-        document = {
-            "title": item.get("title", ""),
-            "release_date": item.get("release_date", ""),
-            "serial_number": item.get("serial_number", ""),
-            "genres": item.get("genres", []),
-            "maker": item.get("maker", []),
-            "cast": item.get("cast", []),
-            "director": item.get("director", ""),
-            "length": item.get("length", ""),
-            "label": item.get("label", []),
-            "link": item.get("link", ""),
-            "preview": item.get("preview", ""),
-            "preview_thumbs": item.get("preview_thumbs", []),
-            "user_rating": item.get("user_rating", ""),
-            "watched": item.get("watched", ""),
-            "owned": item.get("owned", ""),
-            "subscribed": item.get("subscribed", "")
-        }
+        if True:
+            # 构造要插入的文档
+            document = {
+                "title": item.get("title", ""),
+                "release_date": item.get("release_date", ""),
+                "serial_number": item.get("serial_number", ""),
+                "genres": item.get("genres", []),
+                "maker": item.get("maker", []),
+                "cast": item.get("cast", []),
+                "director": item.get("director", ""),
+                "length": item.get("length", ""),
+                "label": item.get("label", []),
+                "link": item.get("link", ""),
+                "preview": item.get("preview", ""),
+                "preview_thumbs": item.get("preview_thumbs", []),
+                "user_rating": item.get("user_rating", ""),
+                "watched": item.get("watched", ""),
+                "owned": item.get("owned", ""),
+                "subscribed": item.get("subscribed", "")
+            }
+            # 如果有重复的，就不插入了
+            if self.db.works.find_one({"link": document["link"]}):
+                return
 
-        # 插入文档到数据库
-        self.db.works.insert_one(document)
+            # 插入文档到数据库
+            self.db.works.insert_one(document)
 
 
 class MySQLPipeline:
