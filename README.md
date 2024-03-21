@@ -4,7 +4,7 @@ A tool to scrape works data from library and displaying in custom website.
 
 this project includes backend and frontend.
 
-<img alt="demo" src="assets/imgs/img.jpg" width="500"/>
+<!-- <img alt="demo" src="assets/imgs/img.jpg" width="500"/> -->
 
 The previous version of JavlibraryScrapy is released to the following address:
 <https://github.com/desonglll/JavlibraryScrapy/releases>
